@@ -1,0 +1,1 @@
+{"level":"error","time":"2024-11-17T01:58:02.837+0500","msg":"Error checking email existence:","error":"missing \"=\" after \"your-db-connection-string\" in connection info string\""}

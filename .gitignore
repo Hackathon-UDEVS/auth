@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 /vendor
+=======
+vendor/
+genproto/
+docs/
+._flattened.txt
+._structure.yaml
+go.sum
+>>>>>>> e2ca387 (done)
