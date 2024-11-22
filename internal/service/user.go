@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-package service
-=======
 package service
 
 import (
@@ -89,4 +86,3 @@ func (s *UserService) UpdateUser(ctx context.Context, req *pb.UpdateUserReq) (*p
 	logs.Info("Successfully updated user")
 	return resp, nil
 }
->>>>>>> e2ca387 (done)

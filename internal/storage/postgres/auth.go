@@ -32,6 +32,7 @@ func (s *UserRepo) Login(ctx context.Context, req *pb.LoginReq) (*pb.LoginRes, e
 		return nil, err
 	}
 
+	// Query to get user details based on the email
 	query := `
 		SELECT id, email, password, role, created_at, updated_at
 		FROM users
@@ -40,26 +41,30 @@ func (s *UserRepo) Login(ctx context.Context, req *pb.LoginReq) (*pb.LoginRes, e
 	var user pb.UserModel
 	var hashedPassword string
 
-	// Query user by email
+	// Execute query
 	err = s.db.QueryRowContext(ctx, query, req.Email).Scan(
 		&user.Id, &user.Email, &hashedPassword, &user.Role,
 		&user.CreatedAt, &user.UpdatedAt,
 	)
 	if err != nil {
 		if err == sql.ErrNoRows {
+			// User not found
 			logs.Warn("User not found", zap.String("email", req.Email))
 			return nil, errors.New("user not found")
 		}
+		// Error querying user
 		logs.Error("Error querying user", zap.Error(err))
 		return nil, err
 	}
 
-	// Check if the password is correct
+	// Check if password matches
 	if !checkPasswordHash(req.Password, hashedPassword) {
+		// Incorrect password
 		logs.Warn("Invalid password", zap.String("email", req.Email))
 		return nil, errors.New("invalid email or password")
 	}
 
+	// Return user data if login is successful
 	return &pb.LoginRes{UserRes: &user}, nil
 }
 
