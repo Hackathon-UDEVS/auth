@@ -98,7 +98,7 @@ func (s *UserRepo) RegisterUser(ctx context.Context, req *pb.RegisterUserReq) (*
 		return &pb.RegisterUserRes{Message: "Duplicate email"}, nil
 	}
 
-	// Proceed with inserting the new user if no duplicate em
+	// Proceed with inserting the new user if no duplicate e
 	id := uuid.NewString()
 	queryInsert := `
 		INSERT INTO users (id, email, password, role) 
