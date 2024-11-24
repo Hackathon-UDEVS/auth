@@ -92,7 +92,7 @@ func (s *UserRepo) RegisterUser(ctx context.Context, req *pb.RegisterUserReq) (*
 		return nil, err
 	}
 
-	// If email exists, return duplicate email error
+	// If email exists, return duplicate email error 12
 	if count > 0 {
 		logs.Warn("Duplicate email found", zap.String("email", req.Email))
 		return &pb.RegisterUserRes{Message: "Duplicate email"}, nil
