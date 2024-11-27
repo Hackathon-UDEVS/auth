@@ -80,7 +80,7 @@ func (s *UserRepo) RegisterUser(ctx context.Context, req *pb.RegisterUserReq) (*
 		return nil, err
 	}
 
-	// Check if the email already exists in the database
+	// Check if the email already exists in the database1234
 	var count int
 	queryCheck := `
 		SELECT COUNT(*) 
