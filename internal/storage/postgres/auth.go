@@ -64,7 +64,7 @@ func (s *UserRepo) Login(ctx context.Context, req *pb.LoginReq) (*pb.LoginRes, e
 		return nil, errors.New("invalid email or password")
 	}
 
-	// Return user data if login is successful123456789
+	// Return user data if login is successful12345678
 	return &pb.LoginRes{UserRes: &user}, nil
 }
 
